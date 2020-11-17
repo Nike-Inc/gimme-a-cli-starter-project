@@ -1,6 +1,4 @@
-
-[license]:LICENSE.txt
-[license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Gimme a CLI Starter Project
 
