@@ -1,40 +1,27 @@
 /*
- * Copyright 2019-present, Nike, Inc.
+ * Copyright 2020-present, Nike, Inc.
  * All rights reserved.
  * 
  * This source code is licensed under the Apache-2.0 license found in
  * the LICENSE file in the root directory of this source tree.
  */
 
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
-    dependencies {
-        classpath "com.github.jengelman.gradle.plugins:shadow:6.0.0"
-    }
+plugins {
+    id 'java'
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "6.0.0"
+    id 'idea'
 }
 
 repositories {
     mavenCentral()
     jcenter()
-
-    // needed until "gimme-a-cli" is in jcenter
-    maven {
-        url  "https://dl.bintray.com/nike/maven"
-    }
+    mavenLocal()
 }
 
-apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: "com.github.johnrengelman.shadow"
-apply plugin: 'idea'
-
 //http://www.gradle.org/docs/current/userguide/java_plugin.html
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 mainClassName = 'com.nike.mycli.Main'
 
@@ -43,8 +30,8 @@ startShadowScripts {
 }
 
 dependencies {
-    compile 'com.nike:gimme-a-cli:0.0.4'
-    compile 'org.slf4j:slf4j-nop:1.7.26'
+    implementation 'com.nike:gimme-a-cli:1.0.0'
+    implementation "ch.qos.logback:logback-classic:1.2.3"
 }
 
 idea {

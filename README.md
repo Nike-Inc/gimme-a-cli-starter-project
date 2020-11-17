@@ -22,6 +22,8 @@ The starter project includes:
 
 ## Usage
 
+1. Install the [Java 11 OpenJDK](https://adoptopenjdk.net/).
+
 1. Fork [this project](https://github.com/Nike-Inc/gimme-a-cli-starter-project).
 
 1. Find/replace `mycli` with the name of your CLI.
@@ -36,13 +38,15 @@ The starter project includes:
     @Parameters(commandNames = "hello",
                 commandDescription = "Prints \"Hello <name>\" to the terminal")
     public class HelloWorldCommand implements Command {
-    
+
+        private final Logger log = LoggerFactory.getLogger(getClass());
+
         @Parameter(names = {"--name"}, required = true)
         private String name;
         
         @Override
         public void execute() {
-            System.out.println("Hello " + name);
+            log.info("Hello " + name);
         }
     }
     ```
@@ -54,10 +58,10 @@ The starter project includes:
     ./gradlew shadowDistTar
  
     # Extract it
-    tar xf build/distributions/mycli-shadow-0.0.1-SNAPSHOT.tar
+    tar xf build/distributions/mycli-shadow-1.0.0-SNAPSHOT.tar
     
     # Run the CLI
-    mycli-shadow-0.0.1-SNAPSHOT/bin/mycli --help
+    mycli-shadow-1.0.0-SNAPSHOT/bin/mycli --help
     ```
 
 ## References

@@ -10,9 +10,8 @@ package com.nike.mycli.commands;
 
 import com.beust.jcommander.Parameters;
 import com.nike.gimme.a.cli.Command;
-import com.nike.gimme.a.cli.Terminal;
-import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -23,22 +22,17 @@ import java.util.Properties;
  * Command that outputs the current version of this CLI.
  */
 @Component
-@Parameters(commandNames = {"--version"}, commandDescription = "Outputs this CLI's version")
+@Parameters(commandNames = {"--version"}, commandDescription = "Output the version of this CLI to the terminal")
 public class VersionCommand implements Command {
 
     private static final String PROPERTIES_FILE = "mycli.properties";
     private static final String VERSION_PROP_NAME = "mycli.version";
 
-    private Terminal terminal;
-
-    @Autowired
-    public VersionCommand(Terminal terminal) {
-        this.terminal = terminal;
-    }
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     public void execute() throws Exception {
-        terminal.info(getVersion());
+        log.info(getVersion());
     }
 
     /**
@@ -52,7 +46,13 @@ public class VersionCommand implements Command {
             properties.load(inputStream);
             return properties.getProperty(VERSION_PROP_NAME);
         } finally {
-            IOUtils.closeQuietly(inputStream);
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
         }
     }
 }
