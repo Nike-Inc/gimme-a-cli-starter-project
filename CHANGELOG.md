@@ -11,6 +11,7 @@ This project adheres to [semantic versioning](http://semver.org/).
 - Upgraded `com.nike:gimme-a-cli` library to current version `1.0.0`.
 - Switched to `slf4j` and `logback-classic` for logging.
 - Upgraded from Java 8 to 11.
+- Added examples of running commands as Gradle tasks.
 
 ### 0.0.1-SNAPSHOT - June 2019
 

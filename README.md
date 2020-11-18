@@ -61,6 +61,17 @@ The starter project includes:
     # Run the CLI
     mycli-shadow-1.0.0-SNAPSHOT/bin/mycli --help
     ```
+   
+1. Optionally define gradle tasks for running CLI commands
+   ```groovy
+   task helloWorldFromGradle(type: CliExec) {
+       description = "Example of defining a CLI command as a Gradle task"
+   
+       // arguments to pass to the application
+       args 'hello', '--name', 'world from gradle'
+   }
+   ``` 
+   This lets you quickly run commands locally without building archives.
 
 ## References
 
