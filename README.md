@@ -1,4 +1,5 @@
 ![Java CI with Gradle](https://github.com/Nike-Inc/gimme-a-cli-starter-project/workflows/Java%20CI%20with%20Gradle/badge.svg)
+![CodeQL](https://github.com/Nike-Inc/gimme-a-cli-starter-project/workflows/CodeQL/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Gimme a CLI Starter Project
